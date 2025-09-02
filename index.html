@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tyas Kasih | Portfolio</title>
+  <meta name="description" content="Portfolio Tyas Kasih - Web Designer, Developer, MC, dan Brand Ambassador dari Jakarta.">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- Animate on Scroll -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family: 'Segoe UI', sans-serif;
+      background:#121212; color:#fff;
+      scroll-behavior:smooth; line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit;}
+
+    /* Navbar */
+    nav{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:20px 80px;background:rgba(18,18,18,0.95);
+      position:sticky;top:0;z-index:1000;
+    }
+    nav .logo{font-size:22px;font-weight:bold;color:#4da3ff;}
+    nav ul{display:flex;list-style:none;}
+    nav ul li{margin-left:30px;}
+    nav ul li a{color:#ddd;transition:.3s;}
+    nav ul li a.active,nav ul li a:hover{color:#4da3ff;}
+
+    /* Toggle Mode */
+    .mode-toggle{cursor:pointer;font-size:24px;color:#4da3ff;}
+
+    /* Hero */
+    .hero{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:80px;min-height:100vh;
+      background:linear-gradient(135deg,#1a1a1a,#222);
+    }
+    .hero-text{max-width:500px;}
+    .hero-text h1{font-size:48px;color:#4da3ff;margin-bottom:15px;}
+    .hero-text p{color:#ccc;margin-bottom:25px;}
+    .btn{
+      display:inline-block;padding:12px 30px;
+      background:linear-gradient(90deg,#4da3ff,#1e6fd6);
+      border-radius:30px;color:#fff;font-weight:bold;
+      transition:.3s;
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 5px 15px rgba(77,163,255,0.5);}
+    .hero img{
+      width:320px;height:320px;border-radius:50%;
+      object-fit:cover;box-shadow:0 5px 20px rgba(0,0,0,0.5);
+    }
+
+    section{padding:80px 60px;min-height:100vh;}
+    section h2{text-align:center;font-size:36px;color:#4da3ff;margin-bottom:40px;}
+
+    /* Projects */
+    .projects-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;
+    }
+    .card{
+      background:#1f1f1f;padding:20px;border-radius:15px;text-align:center;transition:.3s;
+    }
+    .card:hover{transform:translateY(-5px);box-shadow:0 8px 20px rgba(0,0,0,0.4);}
+    .card img{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:15px;}
+
+    /* Process Timeline */
+    .timeline{position:relative;max-width:700px;margin:auto;}
+    .timeline::before{
+      content:"";position:absolute;left:50%;top:0;bottom:0;
+      width:3px;background:#4da3ff;transform:translateX(-50%);
+    }
+    .timeline-item{
+      position:relative;width:50%;padding:20px 40px;
+    }
+    .timeline-item.left{left:0;text-align:right;}
+    .timeline-item.right{left:50%;}
+    .timeline-item::before{
+      content:"";position:absolute;top:20px;width:20px;height:20px;
+      border-radius:50%;background:#4da3ff;
+    }
+    .timeline-item.left::before{right:-10px;}
+    .timeline-item.right::before{left:-10px;}
+    .timeline-item h4{margin-bottom:10px;color:#fff;}
+
+    /* About */
+    .about-container{display:flex;flex-wrap:wrap;align-items:center;gap:40px;justify-content:center;}
+    .about-container img{
+      width:280px;height:280px;border-radius:15px;
+      object-fit:cover;box-shadow:0 5px 15px rgba(0,0,0,0.5);
+    }
+    .about-text{max-width:500px;}
+
+    /* Skills */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;text-align:center;}
+    .skill{background:#1f1f1f;padding:20px;border-radius:10px;}
+    .skill i{font-size:40px;color:#4da3ff;margin-bottom:10px;}
+
+    /* Contact */
+    .contact-form{max-width:500px;margin:auto;background:#1f1f1f;padding:30px;border-radius:15px;}
+    .contact-form input,.contact-form textarea{
+      width:100%;padding:12px;margin-bottom:15px;border:none;border-radius:8px;
+    }
+    .contact-form button{width:100%;padding:12px;background:#4da3ff;border:none;
+      border-radius:8px;font-weight:bold;color:#fff;cursor:pointer;}
+    .contact-form button:hover{background:#1e6fd6;}
+
+    .social-icons{text-align:center;margin-top:25px;}
+    .social-icons a{font-size:30px;margin:0 12px;color:#ddd;transition:.3s;}
+    .social-icons a:hover{color:#4da3ff;}
+
+    /* Blog */
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;}
+    .blog-post{background:#1f1f1f;border-radius:15px;overflow:hidden;transition:.3s;}
+    .blog-post:hover{transform:translateY(-5px);}
+    .blog-post img{width:100%;height:200px;object-fit:cover;}
+    .blog-post .content{padding:20px;}
+    .blog-post h3{margin-bottom:10px;color:#fff;}
+
+    .cv-btn{display:block;width:max-content;margin:30px auto;padding:12px 25px;
+      background:#4da3ff;color:#fff;border-radius:25px;font-weight:bold;transition:.3s;}
+    .cv-btn:hover{background:#1e6fd6;transform:scale(1.05);}
+
+    @media(max-width:768px){
+      nav{padding:20px;}
+      .hero{flex-direction:column;text-align:center;}
+      .hero img{margin-top:30px;}
+      .timeline-item{width:100%;text-align:left;padding-left:60px;}
+      .timeline::before{left:20px;}
+      .timeline-item::before{left:0;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Tyas Kasih</div>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#blog">Blog</a></li>
+    </ul>
+    <div class="mode-toggle"><i class='bx bx-moon'></i></div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-text">
+      <h1>Hey, I'm Tyas Kasih.</h1>
+      <p>Web designer, developer, MC, dan Brand Ambassador dari Jakarta.  
+      Saya membuat website custom untuk membantu bisnis berkembang lebih baik secara online.</p>
+      <a href="#projects" class="btn">My Projects</a>
+    </div>
+    <div><img src="image.png" alt="Profile Photo"></div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="card" data-aos="zoom-in"><img src="dokumentasi.jpg"><h3>Project 1</h3><p>Dokumentasi event & publikasi kegiatan.</p></div>
+      <div class="card" data-aos="zoom-in"><img src="ba.jpg"><h3>Project 2</h3><p>Brand Ambassador Museum Bahari, promosi & komunikasi publik.</p></div>
+      <div class="card" data-aos="zoom-in"><img src="mc.jpg"><h3>Project 3</h3><p>MC & Host di berbagai acara resmi.</p></div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process">
+    <h2>Process</h2>
+    <div class="timeline">
+      <div class="timeline-item left" data-aos="fade-right">
+        <h4>2014-2020</h4><p>SDN Pejagalan 01.</p>
+      </div>
+      <div class="timeline-item right" data-aos="fade-left">
+        <h4>2020-2023</h4><p>SMPN 122 Jakarta.</p>
+      </div>
+      <div class="timeline-item left" data-aos="fade-right">
+        <h4>2023-Sekarang</h4><p>SMKS Pangeran Wijaya Kusuma - Rekayasa Perangkat Lunak.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About</h2>
+    <div class="about-container" data-aos="fade-up">
+      <img src="image2.jpg" alt="About Me">
+      <div class="about-text">
+        <p>Halo, saya Tyas Kasih, siswi kelas 12 jurusan Rekayasa Perangkat Lunak. Selama enam bulan, saya menjalani Praktik Kerja Lapangan (PKL) di Museum Bahari sebagai Brand Ambassador, di mana saya belajar tentang komunikasi, promosi, dan pengelolaan brand dalam lingkungan nyata.</p>
+        <p>Saya juga aktif di organisasi OSIS & MPK, yang membantu mengasah kepemimpinan, kerja sama tim, serta manajemen kegiatan. Dengan kombinasi pengalaman akademik di bidang teknologi & organisasi, saya siap berkontribusi dalam dunia kerja maupun pengembangan diri di masa depan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid" data-aos="fade-up">
+      <div class="skill"><i class='bx bx-code-alt'></i><h4>Web Development</h4><p>HTML, CSS, JS</p></div>
+      <div class="skill"><i class='bx bx-user-voice'></i><h4>Public Speaking</h4><p>MC & Hosting</p></div>
+      <div class="skill"><i class='bx bx-bulb'></i><h4>Leadership</h4><p>OSIS & MPK</p></div>
+      <div class="skill"><i class='bx bx-network-chart'></i><h4>Branding</h4><p>Promosi & Komunikasi</p></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-form" data-aos="zoom-in">
+      <input type="text" placeholder="Nama Anda">
+      <input type="email" placeholder="Email Anda">
+      <textarea rows="5" placeholder="Pesan Anda"></textarea>
+      <button>Kirim Pesan</button>
+    </div>
+    <div class="social-icons">
+      <a href="https://wa.me/6285813209556" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+      <a href="https://www.instagram.com/tyaskc" target="_blank"><i class='bx bxl-instagram'></i></a>
+      <a href="https://github.com/tyzelyyardy" target="_blank"><i class='bx bxl-github'></i></a>
+      <a href="https://www.linkedin.com/in/tyas-kasih" target="_blank"><i class='bx bxl-linkedin'></i></a>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog">
+    <h2>Blog</h2>
+    <div class="blog-grid">
+      <div class="blog-post" data-aos="fade-up">
+        <img src="postermc.jpg" alt="Blog 1">
+        <div class="content"><h3>Memperingati Hari Tari Sedunia</h3><p>MC acara Bincang Tari 'RUMAH SEPANGGUNG', flashmob Tari Burung Raja Udang, Ikon Jakarta Utara.</p></div>
+      </div>
+      <div class="blog-post" data-aos="fade-up">
+        <img src="model.jpg" alt="Blog 2">
+        <div class="content"><h3>Virtual Reality</h3><p>Model poster promosi VR Museum Bahari Jakarta Utara.</p></div>
+      </div>
+      <div class="blog-post" data-aos="fade-up">
+        <img src="host.jpg" alt="Blog 3">
+        <div class="content"><h3>Live IG Talk</h3><p>Host bersama pejabat DKPKP DKI Jakarta, membahas penanaman mangrove Quick Wins Jakarta.</p></div>
+      </div>
+    </div>
+    <a href="cvtyas.jpg" class="cv-btn" download>Download CV</a>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({duration:1000, once:true});
+
+    // Navbar highlight
+    const sections=document.querySelectorAll("section");
+    const navLinks=document.querySelectorAll("nav ul li a");
+    window.addEventListener("scroll",()=>{
+      let current="";
+      sections.forEach(sec=>{
+        const top=sec.offsetTop-100;
+        if(scrollY>=top) current=sec.id;
+      });
+      navLinks.forEach(link=>{
+        link.classList.remove("active");
+        if(link.getAttribute("href")==="#"+current) link.classList.add("active");
+      });
+    });
+
+    // Dark/Light Mode
+    const toggle=document.querySelector(".mode-toggle i");
+    toggle.addEventListener("click",()=>{
+      document.body.classList.toggle("light");
+      if(document.body.classList.contains("light")){
+        toggle.classList.replace("bx-moon","bx-sun");
+        document.body.style.background="#f4f4f4";
+        document.body.style.color="#333";
+      } else {
+        toggle.classList.replace("bx-sun","bx-moon");
+        document.body.style.background="#121212";
+        document.body.style.color="#fff";
+      }
+    });
+  </script>
+</body>
+</html>
